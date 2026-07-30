@@ -84,7 +84,15 @@ Research 3–5 relevant winners for the selected concept. Where data is availabl
 
 Choose the voice, tone, and modulation before editing. Mark changes in pace, energy, emphasis, pitch, and pauses. Build tension with restraint, raise intensity with the stakes, pause before the reveal, and land the payoff confidently.
 
-For the current faceless-channel workflow, default to a clear VEED female narrative voice unless a different voice better fits the channel. Reject flat, rushed, muddy, synthetic, or exaggerated narration.
+### Mandatory VEED production rule
+
+VEED is required for the final narration of every narrated Short and long-form video across every channel. Use a high-quality VEED female narrative voice by default, or a deliberately documented channel-specific VEED voice when the channel requires a different persona. The exported VEED narration must be the only primary spoken track in the review master.
+
+Do not use macOS `say`, browser TTS, ElevenLabs, an unapproved local model, or any placeholder voice in a production or review master. Do not reuse a narration track from another project. Start a fresh VEED project for each final video, export the chosen voice immediately, and record the VEED project ID, voice, export filename, and generation date in the package manifest.
+
+VEED must also be used for required voice processing and any added sound design that is part of the production brief. Owned recordings, YouTube Audio Library assets, or clearly licensed effects may supplement VEED only when their source and license are recorded. Reject flat, rushed, muddy, synthetic, duplicated, clipped, or overlapping narration.
+
+Before delivery, listen to the complete master on headphones, phone speakers, and in mono. Confirm that words remain intelligible under music and effects, that sentence-level pace and emotional range change with the story, and that no second voice is audible underneath.
 
 ## Sound-hook standard
 
@@ -149,6 +157,8 @@ A visually attractive clip is still a failure when it does not directly show, ex
 - **Audio-retention gate:** Every featured sound must have a written story job, an exact visual synchronization point, and a verified license. Reject copied signature sounds, lyric-heavy beds under narration, constant alerting, unsynchronized effects, or any mix that loses clarity on a phone speaker.
 - **Cold-viewer review:** Review once with no script visible and answer: “What is happening, why does it matter, and did every shot support the words being spoken?” Any unclear answer blocks release.
 - **Human approval gate:** No file may be labelled `final_production` until context, audio continuity, visual alignment, caption safe areas, factual accuracy, and copyright records have each been explicitly approved.
+- **User review gate:** Every rendered master must be shown to the user for review before YouTube upload. Uploading as private, unlisted, draft, scheduled, or public is prohibited until the user explicitly approves that exact file. A metadata package or an internal QA pass is not approval.
+- **VEED provenance gate:** The package must include the VEED project ID, voice name, narration export, sound-design notes, and audio QA result. Missing provenance or a non-VEED primary voice blocks release.
 - **Viewer-importance gate:** Before scripting, write the personal question the viewer is trying to answer. If the hook is merely interesting to the producer but does not affect the viewer's safety, money, identity, judgment, status, or understanding of a consequential mystery, strengthen or reject the topic.
 - **First-six-second gate:** Review the opener without the title or description. It must show the exact subject in motion, state the personal question, complicate the obvious answer, and deliver one evidence reward by six seconds.
 - **80/80 hypothesis gate:** Every production package must state why this opener could reach 80% stayed-to-watch and why the body could reach 80% average percentage viewed. This is a required hypothesis, not a fabricated prediction.
