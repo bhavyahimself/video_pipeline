@@ -1,0 +1,107 @@
+[
+  {
+    "file": "Airrack_Y6cSleidhj0.webm",
+    "channel": "Airrack",
+    "duration_seconds": 59.07,
+    "resolution": "360x640",
+    "avg_luma_first_3s": 108.21,
+    "avg_luma_full": 119.9,
+    "scene_cut_count": 26,
+    "scene_cuts_per_30s": 13.21,
+    "mean_volume_db": -12.2,
+    "peak_volume_db": 0.0,
+    "contact_sheet": "Airrack_Y6cSleidhj0_contact.jpg",
+    "sample_timestamps": [
+      0.35,
+      11.81,
+      23.63,
+      35.44,
+      47.25,
+      58.42
+    ]
+  },
+  {
+    "file": "Mark Rober_q3nD5qD758o.webm",
+    "channel": "Mark Rober",
+    "duration_seconds": 51.97,
+    "resolution": "360x640",
+    "avg_luma_first_3s": 106.47,
+    "avg_luma_full": 106.23,
+    "scene_cut_count": 34,
+    "scene_cuts_per_30s": 19.63,
+    "mean_volume_db": -15.9,
+    "peak_volume_db": 0.0,
+    "contact_sheet": "Mark_Rober_q3nD5qD758o_contact.jpg",
+    "sample_timestamps": [
+      0.35,
+      10.39,
+      20.79,
+      31.18,
+      41.57,
+      51.32
+    ]
+  },
+  {
+    "file": "MrBeast_LgbyEFILLJI.webm",
+    "channel": "MrBeast",
+    "duration_seconds": 48.67,
+    "resolution": "360x640",
+    "avg_luma_first_3s": 132.76,
+    "avg_luma_full": 130.5,
+    "scene_cut_count": 32,
+    "scene_cuts_per_30s": 19.73,
+    "mean_volume_db": -19.8,
+    "peak_volume_db": -2.7,
+    "contact_sheet": "MrBeast_LgbyEFILLJI_contact.jpg",
+    "sample_timestamps": [
+      0.35,
+      9.73,
+      19.47,
+      29.2,
+      38.93,
+      48.02
+    ]
+  },
+  {
+    "file": "MrBeast_egvLKQe6I4I.webm",
+    "channel": "MrBeast",
+    "duration_seconds": 50.75,
+    "resolution": "360x640",
+    "avg_luma_first_3s": 126.1,
+    "avg_luma_full": 129.37,
+    "scene_cut_count": 25,
+    "scene_cuts_per_30s": 14.78,
+    "mean_volume_db": -14.0,
+    "peak_volume_db": -0.5,
+    "contact_sheet": "MrBeast_egvLKQe6I4I_contact.jpg",
+    "sample_timestamps": [
+      0.35,
+      10.15,
+      20.3,
+      30.45,
+      40.6,
+      50.1
+    ]
+  },
+  {
+    "file": "Zack D. Films_4sJ2HYZJ2bE.webm",
+    "channel": "Zack D. Films",
+    "duration_seconds": 28.97,
+    "resolution": "360x640",
+    "avg_luma_first_3s": 121.75,
+    "avg_luma_full": 127.96,
+    "scene_cut_count": 0,
+    "scene_cuts_per_30s": 0.0,
+    "mean_volume_db": -14.3,
+    "peak_volume_db": 0.0,
+    "contact_sheet": "Zack_D._Films_4sJ2HYZJ2bE_contact.jpg",
+    "sample_timestamps": [
+      0.35,
+      5.79,
+      11.59,
+      17.38,
+      23.17,
+      28.32
+    ]
+  }
+]
