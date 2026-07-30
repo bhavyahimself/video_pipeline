@@ -208,8 +208,6 @@ CHANNELS = {
 @dataclass
 class APIKeys:
     openai: str = os.getenv("OPENAI_API_KEY", "")
-    elevenlabs: str = os.getenv("ELEVENLABS_API_KEY", "")
-    elevenlabs_voice_id: str = os.getenv("ELEVENLABS_VOICE_ID", "")
     pexels: str = os.getenv("PEXELS_API_KEY", "")
     reddit_client_id: str = os.getenv("REDDIT_CLIENT_ID", "")
     reddit_client_secret: str = os.getenv("REDDIT_CLIENT_SECRET", "")
@@ -228,4 +226,3 @@ class APIKeys:
 
 
 API_KEYS = APIKeys()
-
