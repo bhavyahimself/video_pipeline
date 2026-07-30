@@ -1,0 +1,28 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+node_modules/
+
+# Generated production artifacts and local captures
+daily/
+output/
+recordings/
+transcripts/
+clips/
+thumbnails/
+work/
+*.mp4
+*.mov
+*.webm
+*.mp3
+*.wav
+*.m4a
+
+# Research captures are not redistributed by this repository
+research/**/raw/
+research/**/frames/

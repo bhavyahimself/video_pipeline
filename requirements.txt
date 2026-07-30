@@ -1,0 +1,36 @@
+# Video Pipeline Dependencies
+# Core AI & ML
+openai>=1.12.0
+sentence-transformers>=2.2.2
+chromadb>=0.4.22
+
+# YouTube
+youtube-transcript-api>=0.6.1
+yt-dlp>=2024.1.0
+
+# Video Processing
+moviepy>=1.0.3
+Pillow>=10.2.0
+
+# Web & APIs
+requests>=2.31.0
+aiohttp>=3.9.0
+praw>=7.7.1
+
+# Speech
+openai-whisper>=20231117
+
+# Web Automation
+playwright>=1.41.0
+
+# Data Visualization
+matplotlib>=3.8.0
+plotly>=5.18.0
+
+# Utilities
+python-dotenv>=1.0.0
+click>=8.1.7
+rich>=13.7.0
+pydantic>=2.5.0
+tqdm>=4.66.0
+
