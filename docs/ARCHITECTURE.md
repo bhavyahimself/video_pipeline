@@ -60,7 +60,7 @@ ClipEngine is an AI-powered SaaS platform that automates YouTube Shorts producti
 | Task Queue     | Celery                               | Mature, supports priority queues         |
 | Storage        | S3 / MinIO                           | Scalable file storage                    |
 | Video Engine   | FFmpeg + MoviePy                     | Industry standard video processing       |
-| AI             | OpenAI GPT-4, ElevenLabs, Whisper    | Best-in-class for each task              |
+| AI             | OpenAI GPT-4, VEED exports, Whisper  | Script generation, narration, captions  |
 | Payments       | Stripe                               | Gold standard for SaaS billing           |
 | Deployment     | Docker + Railway/Fly.io              | Easy, scalable, cost-effective           |
 | Monitoring     | Sentry + Prometheus + Grafana        | Error tracking + metrics                 |
@@ -198,4 +198,3 @@ Three Celery queues with different worker allocations:
 - Stripe webhook signature verification
 - S3 presigned URLs (no direct bucket access)
 - Input sanitization on all script/channel text fields
-
