@@ -180,7 +180,7 @@ export default function CreateVideoPage() {
             <div className="flex items-center justify-between p-4 bg-surface-raised border border-white/5 rounded-xl">
               <div>
                 <div className="font-medium text-sm">AI Voiceover</div>
-                <div className="text-xs text-gray-500">Generate ElevenLabs voiceover</div>
+                <div className="text-xs text-gray-500">Use a fresh VEED voice export</div>
               </div>
               <button
                 onClick={() => setSkipVoice(!skipVoice)}
@@ -304,4 +304,3 @@ export default function CreateVideoPage() {
     </div>
   );
 }
-
