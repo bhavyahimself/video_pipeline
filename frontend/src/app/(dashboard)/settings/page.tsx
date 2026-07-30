@@ -46,7 +46,6 @@ export default function SettingsPage() {
         <div className="bg-surface-raised border border-white/5 rounded-xl p-6 space-y-4">
           {[
             { label: "OpenAI API Key", placeholder: "sk-..." },
-            { label: "ElevenLabs API Key", placeholder: "Your ElevenLabs key" },
             { label: "Pexels API Key", placeholder: "Your Pexels key" },
           ].map((key) => (
             <div key={key.label}>
@@ -105,4 +104,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-
