@@ -1,133 +1,62 @@
-"""
-Voice Generator Module
-Generates AI voiceovers using ElevenLabs API.
-Supports per-channel voice configuration and batch generation.
+"""VEED-only narration import and caption helpers.
+
+Production text-to-speech is performed in VEED. This module deliberately does
+not call an alternate TTS provider; it only validates/imports a VEED export.
 """
 
-import json
+import shutil
 from pathlib import Path
 from typing import Optional
 
-import requests
 from rich.console import Console
 
-from config.settings import API_KEYS, CHANNELS, OUTPUT_DIR
+from config.settings import CAPTIONS_DIR
 
 console = Console()
 
 
-class VoiceGenerator:
-    """Generate voiceovers using ElevenLabs Text-to-Speech API."""
+class VeedOnlyProductionError(RuntimeError):
+    """Raised when production code tries to generate speech outside VEED."""
 
-    BASE_URL = "https://api.elevenlabs.io/v1"
+
+class VoiceGenerator:
+    """Fail-closed guard for the required VEED narration workflow."""
 
     def __init__(self, voice_id: str = None):
-        self.voice_id = voice_id or API_KEYS.elevenlabs_voice_id
-        if not API_KEYS.elevenlabs:
-            console.print("[yellow]⚠ ElevenLabs API key not set. Voice generation unavailable.[/]")
-
-    @property
-    def headers(self):
-        return {
-            "xi-api-key": API_KEYS.elevenlabs,
-            "Content-Type": "application/json",
-        }
+        self.voice_id = voice_id or "veed"
 
     def list_voices(self) -> list[dict]:
-        """List all available voices."""
-        try:
-            response = requests.get(
-                f"{self.BASE_URL}/voices",
-                headers=self.headers,
-                timeout=15,
+        """Reject provider voice discovery; select the voice in VEED."""
+        raise VeedOnlyProductionError(
+            "VEED is the only production TTS provider. Select and preview the voice in VEED."
+        )
+
+    @staticmethod
+    def import_veed_export(
+        export_path: Path,
+        output_path: Path,
+        project_id: str,
+        voice_name: str,
+    ) -> Path:
+        """Import a reviewed VEED narration export into the pipeline."""
+        if not project_id or not voice_name:
+            raise VeedOnlyProductionError(
+                "A VEED project ID and voice name are required for production narration."
             )
-            response.raise_for_status()
-            voices = response.json().get("voices", [])
+        source = Path(export_path)
+        if not source.is_file():
+            raise FileNotFoundError(f"VEED export not found: {source}")
+        destination = Path(output_path)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+        return destination
 
-            console.print(f"\n[bold]Available Voices ({len(voices)}):[/]")
-            for v in voices:
-                labels = v.get("labels", {})
-                accent = labels.get("accent", "")
-                gender = labels.get("gender", "")
-                console.print(f"  {v['voice_id']}: {v['name']} ({gender}, {accent})")
-
-            return voices
-
-        except Exception as e:
-            console.print(f"[red]✗ Failed to list voices: {e}[/]")
-            return []
-
-    def generate(
-        self,
-        text: str,
-        output_path: Path = None,
-        voice_id: str = None,
-        stability: float = 0.5,
-        similarity_boost: float = 0.75,
-        style: float = 0.0,
-        model_id: str = "eleven_monolingual_v1",
-    ) -> Optional[Path]:
-        """Generate voiceover audio from text.
-
-        Args:
-            text: The script text to convert to speech
-            output_path: Where to save the audio file
-            voice_id: Override default voice ID
-            stability: Voice stability (0-1). Lower = more expressive
-            similarity_boost: Voice clarity (0-1). Higher = clearer
-            style: Style exaggeration (0-1). Higher = more stylized
-            model_id: ElevenLabs model to use
-
-        Returns:
-            Path to generated audio file
-        """
-        if not API_KEYS.elevenlabs:
-            console.print("[red]✗ ElevenLabs API key required[/]")
-            return None
-
-        vid = voice_id or self.voice_id
-        if not vid:
-            console.print("[red]✗ No voice_id specified. Run list_voices() to find one.[/]")
-            return None
-
-        if output_path is None:
-            output_path = OUTPUT_DIR / "voiceover.mp3"
-
-        output_path = Path(output_path)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        console.print(f"[blue]Generating voiceover ({len(text.split())} words)...[/]")
-
-        try:
-            response = requests.post(
-                f"{self.BASE_URL}/text-to-speech/{vid}",
-                headers=self.headers,
-                json={
-                    "text": text,
-                    "model_id": model_id,
-                    "voice_settings": {
-                        "stability": stability,
-                        "similarity_boost": similarity_boost,
-                        "style": style,
-                    },
-                },
-                timeout=60,
-            )
-            response.raise_for_status()
-
-            with open(output_path, "wb") as f:
-                f.write(response.content)
-
-            console.print(f"[green]✓ Voiceover saved: {output_path.name}[/]")
-            return output_path
-
-        except requests.exceptions.HTTPError as e:
-            error_body = e.response.text if e.response else ""
-            console.print(f"[red]✗ ElevenLabs API error: {e}\n{error_body}[/]")
-            return None
-        except Exception as e:
-            console.print(f"[red]✗ Voice generation error: {e}[/]")
-            return None
+    def generate(self, text: str, output_path: Path = None, **_kwargs) -> Optional[Path]:
+        """Reject direct TTS and require an imported VEED export."""
+        raise VeedOnlyProductionError(
+            "Direct TTS is disabled. Generate narration in a fresh VEED project, "
+            "then call import_veed_export()."
+        )
 
     def generate_for_channel(
         self,
@@ -135,48 +64,17 @@ class VoiceGenerator:
         channel_key: str,
         output_path: Path = None,
     ) -> Optional[Path]:
-        """Generate voiceover with channel-specific voice settings."""
-        channel = CHANNELS.get(channel_key)
-        if not channel:
-            console.print(f"[red]✗ Unknown channel: {channel_key}[/]")
-            return None
-
-        vid = channel.voice_id or self.voice_id
-
-        return self.generate(
-            text=text,
-            output_path=output_path,
-            voice_id=vid,
-            stability=channel.voice_stability,
-            similarity_boost=channel.voice_similarity,
+        """Reject channel-level direct TTS requests."""
+        raise VeedOnlyProductionError(
+            "Channel narration must be exported from VEED and imported with "
+            "import_veed_export()."
         )
 
     def get_usage(self) -> Optional[dict]:
-        """Check API usage and remaining characters."""
-        try:
-            response = requests.get(
-                f"{self.BASE_URL}/user/subscription",
-                headers=self.headers,
-                timeout=10,
-            )
-            response.raise_for_status()
-            data = response.json()
-
-            used = data.get("character_count", 0)
-            limit = data.get("character_limit", 0)
-            remaining = limit - used
-
-            console.print(f"\n[bold]ElevenLabs Usage:[/]")
-            console.print(f"  Characters used: {used:,}")
-            console.print(f"  Character limit: {limit:,}")
-            console.print(f"  Remaining: {remaining:,}")
-            console.print(f"  Tier: {data.get('tier', 'unknown')}")
-
-            return data
-
-        except Exception as e:
-            console.print(f"[red]✗ Failed to get usage: {e}[/]")
-            return None
+        """Reject alternate-provider usage checks."""
+        raise VeedOnlyProductionError(
+            "Provider usage checks are disabled; manage production narration in VEED."
+        )
 
 
 class WhisperCaptionGenerator:
@@ -201,7 +99,6 @@ class WhisperCaptionGenerator:
         Returns:
             Path to generated SRT file
         """
-        from config.settings import CAPTIONS_DIR
         if output_dir is None:
             output_dir = CAPTIONS_DIR
 
@@ -290,4 +187,3 @@ class WhisperCaptionGenerator:
         secs = int(seconds % 60)
         millis = int((seconds - int(seconds)) * 1000)
         return f"{hours:02d}:{minutes:02d}:{secs:02d},{millis:03d}"
-
