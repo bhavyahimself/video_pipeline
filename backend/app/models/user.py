@@ -45,7 +45,6 @@ class User(Base):
 
     # API Keys (encrypted)
     openai_api_key_encrypted = Column(Text, nullable=True)
-    elevenlabs_api_key_encrypted = Column(Text, nullable=True)
 
     # Status
     is_active = Column(Boolean, default=True)
@@ -59,4 +58,3 @@ class User(Base):
     projects = relationship("Project", back_populates="user", lazy="dynamic")
     scripts = relationship("Script", back_populates="user", lazy="dynamic")
     subscriptions = relationship("Subscription", back_populates="user", lazy="dynamic")
-
