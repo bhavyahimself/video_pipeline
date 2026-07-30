@@ -23,7 +23,7 @@ Make professional YouTube Shorts production accessible to anyone with an idea. O
 ### Creator — $29/month
 - 30 videos/month
 - All 11 channel types
-- Custom ElevenLabs voice selection
+- VEED voice selection and export provenance
 - No watermark
 - 1080p output
 - YouTube direct upload
@@ -63,7 +63,7 @@ Make professional YouTube Shorts production accessible to anyone with an idea. O
 - [x] AI script generation (GPT-4)
 - [x] Visual cue extraction
 - [x] Stock footage sourcing (Pexels)
-- [x] AI voiceover (ElevenLabs)
+- [x] VEED text-to-speech narration import
 - [x] Auto-captions (Whisper)
 - [x] Thumbnail generation
 - [x] Video preview & download
@@ -71,7 +71,7 @@ Make professional YouTube Shorts production accessible to anyone with an idea. O
 
 ### Creator Features
 - [x] All 11 pre-built channel templates
-- [x] Voice selection (20+ ElevenLabs voices)
+- [x] VEED voice selection with channel-specific tone and modulation
 - [x] YouTube direct upload
 - [x] Script version history
 - [x] Basic usage analytics
@@ -182,4 +182,3 @@ Each channel has a defined voice profile:
 | Avg generation time | < 5 min | < 3 min |
 | User retention (30d) | 40% | 55% |
 | NPS | 30 | 50 |
-
