@@ -1,0 +1,77 @@
+{
+  "video": {
+    "channel": "",
+    "title": "",
+    "format": "short_or_long_form",
+    "runtime_seconds": 0,
+    "primary_audio_experiment": ""
+  },
+  "mix_targets": {
+    "integrated_lufs": -16.0,
+    "true_peak_dbtp_max": -1.5,
+    "narration_is_dominant": true,
+    "mono_check_required": true,
+    "phone_speaker_check_required": true,
+    "muted_comprehension_check_required": true
+  },
+  "background_bed": {
+    "asset": "",
+    "source_url": "",
+    "license": "",
+    "attribution": "",
+    "story_emotion": "",
+    "start_db_below_narration": 21,
+    "speech_duck_db": 6,
+    "notes": ""
+  },
+  "motif": {
+    "meaning": "",
+    "cue_class": "",
+    "asset": "",
+    "source_url": "",
+    "license": "",
+    "maximum_repetitions": 3,
+    "resolution_plan": ""
+  },
+  "events": [
+    {
+      "start_seconds": 0.0,
+      "end_seconds": 0.3,
+      "story_beat": "opening visual proof",
+      "job": "identify_or_orient",
+      "cue_class": "",
+      "asset": "",
+      "source_url": "",
+      "license": "",
+      "original": false,
+      "semantic_match": "",
+      "intended_response": "",
+      "level_db_below_narration": 10,
+      "narration_duck_db": 0,
+      "visual_sync_frame_or_action": "",
+      "repetition_number": 1,
+      "qa_result": "pending"
+    }
+  ],
+  "qa": {
+    "full_decode": "pending",
+    "integrated_lufs": null,
+    "true_peak_dbtp": null,
+    "clipping_events": [],
+    "unexpected_silence_events": [],
+    "overlapping_voices": false,
+    "narration_intelligible_at_low_volume": "pending",
+    "mono_pass": "pending",
+    "phone_speaker_pass": "pending",
+    "muted_comprehension_pass": "pending",
+    "all_licenses_recorded": "pending"
+  },
+  "analytics_follow_up": {
+    "first_hour": {},
+    "six_hours": {},
+    "twenty_four_hours": {},
+    "seven_days": {},
+    "retention_events_near_audio_cues": [],
+    "keep_change_or_remove": ""
+  }
+}
