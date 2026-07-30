@@ -18,7 +18,7 @@ const FEATURES = [
   {
     icon: "🎙️",
     title: "AI Voiceover",
-    desc: "ElevenLabs voices with channel-specific tone and modulation.",
+    desc: "VEED narration with channel-specific tone and modulation.",
   },
   {
     icon: "✂️",
@@ -304,4 +304,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
