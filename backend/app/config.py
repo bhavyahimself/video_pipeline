@@ -56,8 +56,6 @@ class Settings(BaseSettings):
 
     # ── AI APIs ──────────────────────────────────────────────────────────
     OPENAI_API_KEY: str = ""
-    ELEVENLABS_API_KEY: str = ""
-    ELEVENLABS_DEFAULT_VOICE_ID: str = ""
     PEXELS_API_KEY: str = ""
     ANTHROPIC_API_KEY: str = ""
     TWELVE_LABS_API_KEY: str = ""
@@ -99,4 +97,3 @@ class Settings(BaseSettings):
 @lru_cache()
 def get_settings() -> Settings:
     return Settings()
-
